@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name finApp.controller:MainCtrl
+ * @name finApp.controller:CreateaccountCtrl
  * @description
- * # MainCtrl
+ * # CreateaccountCtrl
  * Controller of the finApp
  */
 angular.module('finApp')
-  .controller('MainCtrl', function ($rootScope) {
+  .controller('CreateaccountCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

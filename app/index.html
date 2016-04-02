@@ -13,6 +13,7 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- endbuild -->
   </head>
   <body ng-app="finApp">
@@ -33,15 +34,21 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">fin</a>
+            <a class="navbar-brand" href="#/">FIN</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
+              <li><a href="#/">Home</a></li>
+              <li><a ng-href="#/dashboard">Dashboard</a></li>
               <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li><a ng-href="#/contact">Contact</a></li>
+              <li class="nav-right" ng-show="!loggedIn"><a ng-href="#/signin">Log in</a></li>
+              <li class="nav-right" ng-show="!loggedIn"><a ng-href="#/createaccount">Create Account</a></li>
+              <li class="nav-right" ng-show="loggedIn"><a ng-href="" ng-click="logout()">Log out</a></li>
+              <li class="nav-right" ng-show="loggedIn"><a ng-href="#/account">Hi {{authData.github.displayName}}!</a></li>
+              <li class="nav-right" ng-show="loggedIn"><img class="img-circle profilePic" ng-src={{authData.github.profileImageURL}} alt="Profile Pic"></li>
             </ul>
           </div>
         </div>
@@ -54,7 +61,7 @@
 
     <div class="footer">
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        <p><span class="glyphicon glyphicon-heart"></span> from the Fin team</p>
       </div>
     </div>
 
@@ -81,6 +88,11 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+      
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -88,6 +100,11 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/contact.js"></script>
+        <script src="scripts/controllers/dashboard.js"></script>
+        <script src="scripts/controllers/signin.js"></script>
+        <script src="scripts/controllers/createaccount.js"></script>
+        <script src="scripts/services/auth.js"></script>
         <!-- endbuild -->
 </body>
 </html>

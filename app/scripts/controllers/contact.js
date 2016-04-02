@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name finApp.controller:MainCtrl
+ * @name finApp.controller:ContactCtrl
  * @description
- * # MainCtrl
+ * # ContactCtrl
  * Controller of the finApp
  */
 angular.module('finApp')
-  .controller('MainCtrl', function ($rootScope) {
+  .controller('ContactCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

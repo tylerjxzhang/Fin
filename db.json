@@ -1,0 +1,39 @@
+{
+    userInfo:{
+        firstName:'John',
+        lastName:'Doe',
+        profilePicUrl:'',
+    },
+    activities:[
+        {
+            name:"Social Media",
+            intervals:[
+                {
+                    start:timeStamp1,
+                    end:timeStamp2,
+                },
+                {
+                    start:timeStamp3,
+                    end:timeStamp4,
+                },
+            ]
+        },
+        {
+            name:"Reading",
+            intervals:[
+                {
+                    start:timeStamp1,
+                    end:timeStamp2,
+                },
+                {
+                    start:timeStamp3,
+                    end:timeStamp4,
+                },
+                {
+                    start:timeStamp5,
+                    end:timeStamp6,
+                },
+            ]
+        },
+    ]
+}

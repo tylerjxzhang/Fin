@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'firebase'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -28,6 +29,33 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
+      })
+      .when('/contact', {
+        templateUrl: 'views/contact.html',
+        controller: 'ContactCtrl',
+        controllerAs: 'contact'
+      })
+      .when('/dashboard', {
+        resolve:{
+          "loginCheck" : function($location, $rootScope){
+              if(!$rootScope.loggedIn){
+                  $location.path('/signin');
+              };
+          }  
+        },
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashboardCtrl',
+        controllerAs: 'dashboard'
+      })
+      .when('/signin', {
+        templateUrl: 'views/signin.html',
+        controller: 'SigninCtrl',
+        controllerAs: 'signin'
+      })
+      .when('/createaccount', {
+        templateUrl: 'views/createaccount.html',
+        controller: 'CreateaccountCtrl',
+        controllerAs: 'createaccount'
       })
       .otherwise({
         redirectTo: '/'
