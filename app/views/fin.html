@@ -1,0 +1,27 @@
+
+<ul class="finul">
+    <div class="ng-cloak" ng-repeat="activity in activities">
+        <li class="hover11 finli" style="border:1px solid white; background-color:{{activity.color}}">
+            <h2>{{activity.name}}</h2>
+            <h4 ng-show="!activity.timing">{{convert(sum(activity))}} / {{convert(activity.targetTime)}}</h3>
+            <h4 ng-show="!activity.timing">{{round(sum(activity) / activity.targetTime * 100)}} %</h3>
+            <button class="btn btn-warning hvr-grow" ng-show="!activity.timing" ng-click="startTiming(activity)">  
+                <i class="fa fa-hourglass-start fa-2x"></i>
+            </button>
+            <stopwatch ng-hide="!activity.timing" title="Stopwatch #1" time="sharedTime"></stopwatch>
+            
+        </li>
+    </div>
+  
+</ul>
+
+<script type="text/ng-template" id="stopwatch.html" ng-init="swctrl.start()">
+    <div>
+   <!--<button class="btn btn-warning hvr-grow" ng-click="swctrl.stop(); endTiming(activity,swctrl.getElapsedMs());swctrl.reset()">-->
+                
+            </button>
+  <h3>{{swctrl.convert(swctrl.getElapsedMs())}}</h3>
+    <button id="start" class="btn btn-success" ng-click= "swctrl.start()"><i class="fa fa-play fa-2x"></i></button>
+        <button id="stop" class="btn btn-danger" ng-click= "swctrl.stop()" ><i class="fa fa-stop fa-2x"></i></button>
+        </div>
+</script>  

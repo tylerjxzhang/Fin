@@ -23,7 +23,20 @@ angular
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        resolve:{
+          loginCheck : function($location, $rootScope){
+              if($rootScope.loggedIn){
+                  $location.path('/fin');
+              };
+              $rootScope.logout = function(Auth){
+                $rootScope.loggenIn = false;
+                $rootScope.authData = null;
+                Auth.$unauth;
+                $location.path('/signin');
+            };
+          }  
+        },
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -37,10 +50,22 @@ angular
       })
       .when('/dashboard', {
         resolve:{
-          "loginCheck" : function($location, $rootScope){
+            currentAuth:function(Auth){
+                return Auth.$waitForAuth();
+            },
+          loginCheck : function($location, $rootScope){
               if(!$rootScope.loggedIn){
                   $location.path('/signin');
               };
+              
+              var ref = new Firebase('https://dazzling-heat-9788.firebaseio.com/activities');
+              
+              ref.on("value", function(snapshot){
+              $rootScope.activities = snapshot.val();
+                console.log(snapshot.val());
+            }, function (errorObject){
+              console.log("The read failed: " + errorObject.code);
+            });
           }  
         },
         templateUrl: 'views/dashboard.html',
@@ -56,6 +81,29 @@ angular
         templateUrl: 'views/createaccount.html',
         controller: 'CreateaccountCtrl',
         controllerAs: 'createaccount'
+      })
+      .when('/fin', {
+        templateUrl: 'views/fin.html',
+        controller: 'FinCtrl',
+        controllerAs: 'fin',
+        resolve:{
+            currentAuth:function(Auth){
+                return Auth.$waitForAuth();
+            },
+          loginCheck : function($location, $rootScope){
+              if(!$rootScope.loggedIn){
+                  $location.path('/signin');
+              };
+              var ref = new Firebase('https://dazzling-heat-9788.firebaseio.com/activities');
+
+            ref.on("value", function(snapshot){
+              $rootScope.activities = snapshot.val();
+                console.log(snapshot.val());
+            }, function (errorObject){
+              console.log("The read failed: " + errorObject.code);
+            });
+          }  
+        },
       })
       .otherwise({
         redirectTo: '/'

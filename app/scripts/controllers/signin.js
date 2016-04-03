@@ -9,17 +9,7 @@
  */
 angular.module('finApp')
   .controller('SigninCtrl', function ($rootScope,$scope,Auth,$location) {
-    Auth.$onAuth(function(authData){
-        $rootScope.loggedIn = true;
-        $rootScope.authData = authData;
-        $location.path('/dashboard');
-        $rootScope.logout = function(){
-            $rootScope.loggenIn = false;
-            $rootScope.authData = null;
-            $location.path('/signin');
-        };
-        console.log(authData);
-    });
+    
     $scope.loginFB = function($rootScope){
         Auth.$authWithOAuthPopup("facebook")
         .then(function(authData){
@@ -30,6 +20,12 @@ angular.module('finApp')
         });
     };
     $scope.loginGH = function(){
+        Auth.$onAuth(function(authData){
+            $rootScope.loggedIn = true;
+            $rootScope.authData = authData;
+            $location.path('/fin');
+            console.log(authData);
+        });
         Auth.$authWithOAuthPopup("github")
         .catch(function(error){
             console.log(error);
