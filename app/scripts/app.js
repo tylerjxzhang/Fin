@@ -104,8 +104,5 @@ angular
             });
           }  
         },
-      })
-      .otherwise({
-        redirectTo: '/'
       });
   });

@@ -2,12 +2,6 @@
 <ul class="finul">
     <div class="ng-cloak" ng-repeat="activity in activities">
         <li class="hover12 finli" style="background-color:{{activity.color}}">
-            <!--<div class="progress">
-              <div class="progress-bar progress-bar-striped active" role="progressbar" 
-              aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{round(sum(activity) / activity.targetTime * 100)}}%">
-                {{round(sum(activity) / activity.targetTime * 100)}} %
-              </div>
-            </div>-->
             <h2>{{activity.name}}</h2>
             <h4 ng-show="!activity.timing">{{convert(sum(activity))}} / {{convert(activity.targetTime)}}</h3>
             <div class="hover11" ng-show="!activity.timing" ng-click="startTiming(activity)">  

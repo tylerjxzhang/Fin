@@ -22,7 +22,9 @@ angular.module('finApp')
     $scope.sum = function(activity){
         var sum = 0;
         $.each(activity.time, function(key, value){
-            sum += activity.time[key].End - activity.time[key].Start;
+            if(activity.time[key].Start > 1459641600000){
+                sum += activity.time[key].End - activity.time[key].Start;
+            }
         })
         //console.log(activity.name + ": " + sum)
         return sum;
