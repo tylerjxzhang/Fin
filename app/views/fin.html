@@ -5,18 +5,18 @@
             <h2>{{activity.name}}</h2>
             <h4 ng-show="!activity.timing">{{convert(sum(activity))}} / {{convert(activity.targetTime)}}</h3>
             <div class="hover11" ng-show="!activity.timing" ng-click="startTiming(activity)">  
-                <i class="fa fa-hourglass-start fa-x"></i>
+                <i class="fa fa-hourglass-start fa-2x"></i>
             </div>
             <stopwatch ng-hide="!activity.timing" title="Stopwatch #1" time="sharedTime"></stopwatch>
             
         </li>
         
     </div>
-  <li class="hover12 finli" style="border:1px solid white; background-color:white">
+  <li class="hover12 finli" style="border:1px solid white; background-color:#AACCB1">
             <h2>Add New Activity</h2>
-            <button class="btn btn-success btnbtn hover15"  data-toggle="modal" data-target="#myModalHorizontal">  
-                <i class="fa fa-plus fa-3x"></i>
-            </button>
+            <div data-toggle="modal" data-target="#myModalHorizontal">  
+                <i class="fa fa-plus fa-2x"></i>
+            </div>
         </li>
 </ul>
 
@@ -26,8 +26,8 @@
                 
             </button>
   <h3>{{swctrl.convert(swctrl.getElapsedMs())}}</h3>
-    <button id="start" class="btn btn-success hover15" ng-click= "swctrl.start()"><i class="fa fa-play fa-2x"></i></button>
-        <button id="stop" class="btn btn-danger hover15" ng-click= "swctrl.stop()" ><i class="fa fa-stop fa-2x"></i></button>
+<i ng-click= "swctrl.start()" class="fa fa-play fa-x"></i>
+<i ng-click= "swctrl.stop()" class="fa fa-stop fa-x"></i>
         </div>
 </script>  
 

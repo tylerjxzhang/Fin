@@ -29,7 +29,7 @@ angular.module('finApp')
                 "value": $scope.sumOf(value)
             })
         });
-        console.log($scope.list);
+        console.log(JSON.stringify($scope.list));
     };
     
     $scope.dataGen();

@@ -117,7 +117,7 @@ angular.module('finApp')
             var minutes = x % 60;
             x = Math.floor(x/60);
             var hours = x;
-          var time = hours + 'hr ' + minutes + 'min ' + seconds + 'sec';
+          var time = hours + 'hr  ' + minutes + 'min  ' + seconds + 'sec';
           return time;
     };
     

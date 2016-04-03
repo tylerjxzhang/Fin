@@ -9,7 +9,7 @@ font-family: 'Raleway', sans-serif;
 color: #000;
     
 
-background: #79B8B5; /* fallback for old browsers */
+background: #7AB8B4; /* fallback for old browsers */
 background: -webkit-linear-gradient(to bottom, #79B8B5 , #eea849); /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to bottom, #79B8B5 , #669B9B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         
@@ -310,4 +310,5 @@ canvas {
 .count-particles {
   border-radius: 0;
 }
+
 
