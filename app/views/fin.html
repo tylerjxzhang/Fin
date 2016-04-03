@@ -1,18 +1,29 @@
 
 <ul class="finul">
     <div class="ng-cloak" ng-repeat="activity in activities">
-        <li class="hover11 finli" style="border:1px solid white; background-color:{{activity.color}}">
+        <li class="hover12 finli" style="background-color:{{activity.color}}">
+            <!--<div class="progress">
+              <div class="progress-bar progress-bar-striped active" role="progressbar" 
+              aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{round(sum(activity) / activity.targetTime * 100)}}%">
+                {{round(sum(activity) / activity.targetTime * 100)}} %
+              </div>
+            </div>-->
             <h2>{{activity.name}}</h2>
             <h4 ng-show="!activity.timing">{{convert(sum(activity))}} / {{convert(activity.targetTime)}}</h3>
-            <h4 ng-show="!activity.timing">{{round(sum(activity) / activity.targetTime * 100)}} %</h3>
-            <button class="btn btn-warning hvr-grow" ng-show="!activity.timing" ng-click="startTiming(activity)">  
-                <i class="fa fa-hourglass-start fa-2x"></i>
-            </button>
+            <div class="hover11" ng-show="!activity.timing" ng-click="startTiming(activity)">  
+                <i class="fa fa-hourglass-start fa-x"></i>
+            </div>
             <stopwatch ng-hide="!activity.timing" title="Stopwatch #1" time="sharedTime"></stopwatch>
             
         </li>
+        
     </div>
-  
+  <li class="hover12 finli" style="border:1px solid white; background-color:white">
+            <h2>Add New Activity</h2>
+            <button class="btn btn-success btnbtn hover15"  data-toggle="modal" data-target="#myModalHorizontal">  
+                <i class="fa fa-plus fa-3x"></i>
+            </button>
+        </li>
 </ul>
 
 <script type="text/ng-template" id="stopwatch.html" ng-init="swctrl.start()">
@@ -21,7 +32,58 @@
                 
             </button>
   <h3>{{swctrl.convert(swctrl.getElapsedMs())}}</h3>
-    <button id="start" class="btn btn-success" ng-click= "swctrl.start()"><i class="fa fa-play fa-2x"></i></button>
-        <button id="stop" class="btn btn-danger" ng-click= "swctrl.stop()" ><i class="fa fa-stop fa-2x"></i></button>
+    <button id="start" class="btn btn-success hover15" ng-click= "swctrl.start()"><i class="fa fa-play fa-2x"></i></button>
+        <button id="stop" class="btn btn-danger hover15" ng-click= "swctrl.stop()" ><i class="fa fa-stop fa-2x"></i></button>
         </div>
 </script>  
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Add New Activity
+                </h4>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                
+                <form role="form">
+                  <div class="form-group">
+                    <label for="name">Activity</label>
+                      <input ng-model="actName" type="text" class="form-control"
+                      id="name" placeholder="Enter activity name"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="timepicker">Goal Time</label>
+                      <input ng-model="targetTime" id="timepicker" class="form-control" data-provide="timepicker" data-minute-step="1" data-modal-backdrop="false" data-default-time='2:00' data-show-Meridian="false" type="text" placeholder="Enter desired time"/></div>
+                    
+                    <div class="form-group">
+                    <label for="color">Color</label>
+                      <input ng-model="color" type="text" class="form-control"
+                      id="name" placeholder="Enter color code"/>
+                  </div>
+                  </div>
+                
+                </form>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button ng-click="newActivity()" class="btn btn-primary" data-dismiss="modal">
+                    Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

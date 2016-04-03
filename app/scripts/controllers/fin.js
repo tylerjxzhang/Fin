@@ -43,9 +43,11 @@ angular.module('finApp')
         activity.timing = false;
         var endTime = new Date().getTime();
         var startTime = endTime - time;
+        console.log(activity);
         var ref = new Firebase('https://dazzling-heat-9788.firebaseio.com/activities/'+activity.id+'/time/');
         
         var list = $firebaseArray(ref);
+        console.log(list);
         list.$add({
           "Start": startTime+"",
           "End": endTime+""
@@ -53,7 +55,19 @@ angular.module('finApp')
         
     };
     
-    
+    $scope.newActivity = function(){
+        var ref = new Firebase('https://dazzling-heat-9788.firebaseio.com/activities/');
+        var list = $firebaseArray(ref);
+        list.$add({
+            "color":$scope.color || "#edf42f",
+            "id":$rootScope.activities.length,
+            "name":$scope.actName,
+            "targetTime": ($scope.targetTime.slice(':')[0]*60*1000 || 0) + ($scope.targetTime.slice(':')[1]*1000 || 0),
+            "time":[],
+            "timeing":false,
+            "type":"Living"
+        });
+    }
 })
 .directive('stopwatch', function() { return {
   restrict: 'AE',
@@ -112,7 +126,7 @@ angular.module('finApp')
         totalElapsedMs += elapsedMs;
         elapsedMs = 0;
       }
-        console.log($scope.$parent);
+        //console.log($scope.$parent);
         $scope.$parent.$parent.endTiming($scope.$parent.activity, self.getElapsedMs());
     };
     

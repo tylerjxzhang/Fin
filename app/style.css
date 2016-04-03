@@ -1,21 +1,38 @@
+html, 
 body {
-  background: #eee;
-  padding: 0;
+    height: 100%;
 }
+
+body {
+  padding: 0;
+font-family: 'Raleway', sans-serif;
+color: #000;
+    
+
+background: #79B8B5; /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #79B8B5 , #eea849); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #79B8B5 , #669B9B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+}
+
+i.fa {
+    color:#E3EFS7;
+}
+
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-
+.navbar {
+    background: #79B8B5; !important;
+    font-weight: 800;
+    font-size: 1.2em;
+    color:#E3F0D7; !important
+    font-family: 'Raleway';
+    margin:0;
 }
 
 .header h3 {
@@ -25,9 +42,14 @@ line-height: 40px;
 padding-bottom: 19px;
 }
 
+.footer {
+    position: absolute;
+    bottom:20px;
+    left:30px;
+}
+
 .nav-right {
-    position: relative;
-    left:30%;
+    margin-right:5px;
 }
 
 .profilePic {
@@ -37,16 +59,16 @@ padding-bottom: 19px;
 
 .finul{
     list-style-type: none; 
-    margin: 50px 50px 0; 
+    margin:  0; 
     padding: 0; 
     width: 100%;
 }
 
 .finli {
-    margin: 1%; 
+    margin: 2%; 
     float: left; 
-    width: 30%; 
-    height: 170px; 
+    width: 20%; 
+    height: 200px; 
     font-size: 2em; 
     text-align: center; 
 }
@@ -59,6 +81,93 @@ padding-bottom: 19px;
 }
 .hover11:hover{
 	opacity: 1;
+}
+
+.hover07 {
+	-webkit-filter: blur(1px);
+	filter: blur(1px);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.hover07:hover {
+	-webkit-filter: blur(0);
+	filter: blur(0);
+}
+
+/* Gray Scale */
+.hover08{
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.hover08:hover{
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0);
+}
+
+/* Opacity #2 */
+.hover12 {
+	background: #1abc9c;
+}
+.hover12 {
+	opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.hover12:hover {
+	opacity: .8;
+}
+
+
+/* Circle */
+.hover15 {
+	position: relative;
+}
+.hover15::before {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 0;
+	height: 0;
+	background: rgba(255,255,255,.2);
+	border-radius: 100%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	opacity: 0;
+}
+.hover15:hover::before {
+	-webkit-animation: circle .75s;
+	animation: circle .75s;
+}
+@-webkit-keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 200%;
+		height: 200%;
+		opacity: 0;
+	}
+}
+@keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 200%;
+		height: 200%;
+		opacity: 0;
+	}
 }
 
 /* Grow */
@@ -114,7 +223,6 @@ padding-bottom: 19px;
 	padding-bottom: 0.5em;
 }
 .omb_login .omb_loginOr .omb_hrOr {
-	background-color: #cdcdcd;
 	height: 1px;
 	margin-top: 0px !important;
 	margin-bottom: 0px !important;
@@ -125,7 +233,6 @@ padding-bottom: 19px;
 	left: 50%;
 	top: -0.6em;
 	margin-left: -1.5em;
-	background-color: white;
 	width: 3em;
 	text-align: center;
 }			
@@ -143,4 +250,63 @@ padding-bottom: 19px;
         text-align: right;
 		margin-top:10px;
  	}		
+}
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+    z-index: -9999;
+}
+
+
+/* ---- particles.js container ---- */
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #7ab8b4;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+
+/* ---- stats.js ---- */
+
+.count-particles {
+  background: #000022;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 80px;
+  color: #13E8E9;
+  font-size: .8em;
+  text-align: left;
+  text-indent: 4px;
+  line-height: 14px;
+  padding-bottom: 2px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.js-count-particles {
+  font-size: 1.1em;
+}
+
+#stats,
+.count-particles {
+  -webkit-user-select: none;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+#stats {
+  border-radius:  0;
+  overflow: hidden;
+}
+
+.count-particles {
+  border-radius: 0;
 }

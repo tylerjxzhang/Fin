@@ -15,20 +15,22 @@
     <!-- build:css(.tmp) styles/main.css -->
      
     <!-- endbuild -->
-      <link rel="stylesheet" href="styles/main.css">
-
+   <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+      <link href='https://fonts.googleapis.com/css?family=Raleway|Merienda' rel='stylesheet' type='text/css'>
 <!--     <link rel="stylesheet" href="style.css">-->
   </head>
   <body ng-app="finApp">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+      
 
     <!-- Add your site or application content here -->
+      
     <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
+      <div class="navbar navbar-default navbar-static-top" role="navigation" style="width:100%">
+        <div class="">
           <div class="navbar-header">
 
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
@@ -43,11 +45,13 @@
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-left" style="margin-left:5%">
               <li><a href="#/">Home</a></li>
               <li><a ng-href="#/dashboard">Dashboard</a></li>
               <li><a ng-href="#/about">About</a></li>
               <li><a ng-href="#/contact">Contact</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right" style="margin-right:5%">
               <li class="nav-right" ng-show="!loggedIn"><a ng-href="#/signin">Log in</a></li>
               <li class="nav-right" ng-show="!loggedIn"><a ng-href="#/createaccount">Create Account</a></li>
               <li class="nav-right" ng-show="loggedIn"><a ng-href="" ng-click="logout()">Log out</a></li>
@@ -58,16 +62,21 @@
         </div>
       </div>
     </div>
+      
+      <!-- particles.js container -->
 
+      
     <div class="container">
-    <div ng-view=""></div>
+        
+    <div ng-view="" ng-style="{'background-color':'transparent'}"></div>
     </div>
 
     <div class="footer">
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Fin team</p>
+        <h2><span class="glyphicon glyphicon-heart"></span> from the Fin team</h2>
       </div>
     </div>
+       
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -92,6 +101,8 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+      <script src="bower_components/progressbar.js/dist/progressbar.js"></script>
+      <script src="bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -109,10 +120,143 @@
         <script src="scripts/services/timeconvert.js"></script>
       
         <!-- endbuild -->
-      
+      <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
+<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<!-- stats.js lib -->
+<script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
       <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+      
+      <script> 
+      particlesJS("particles-js", {
+  "particles": {
+    "number": {
+      "value": 24,
+      "density": {
+        "enable": true,
+        "value_area": 721.5354273894853
+      }
+    },
+    "color": {
+      "value": "#e3f0d7"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 5
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": 0.5,
+      "random": false,
+      "anim": {
+        "enable": false,
+        "speed": 1,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 3,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 40,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 256.54592973848366,
+      "color": "#e3f0d7",
+      "opacity": 0.44093831673801875,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 4.810236182596568,
+      "direction": "none",
+      "random": false,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "grab"
+      },
+      "onclick": {
+        "enable": true,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+});
+var count_particles, stats, update;
+stats = new Stats;
+stats.setMode(0);
+stats.domElement.style.position = 'absolute';
+stats.domElement.style.left = '0px';
+stats.domElement.style.top = '0px';
+document.body.appendChild(stats.domElement);
+count_particles = document.querySelector('.js-count-particles');
+update = function() {
+  stats.begin();
+  stats.end();
+  if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+    count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+  }
+  requestAnimationFrame(update);
+};
+requestAnimationFrame(update);;
+      </script>
       
     <script src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
       <script src="https://code.jquery.com/ui/1.12.0-rc.1/jquery-ui.min.js"   integrity="sha256-mFypf4R+nyQVTrc8dBd0DKddGB5AedThU73sLmLWdc0="   crossorigin="anonymous"></script>
